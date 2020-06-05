@@ -1,14 +1,26 @@
 workspace "PNG-Parser"
 	configurations {"Debug", "Release"}
 	platforms {"Win32", "x64"}
-
 	filter "platforms:Win32"
 		architecture "x86"
 
 	filter "platforms:x64"
 		architecture "x86_64"
 
-output = "%{cfg.buildcfg}-%{cfg.architecture}"
+	filter {}
+
+	output = "%{cfg.platform}/%{cfg.buildcfg}"
+
+	targetdir ("bin/" .. output .. "/%{prj.name}")
+	objdir ("bin/int/" .. output .. "/%{prj.name}")
+
+function IncludeZlib()
+	includedirs "thirdparty/zlib/"
+end
+
+function LinkZlib()
+	links "zlib"
+end
 
 filter "configurations:Debug"
 		defines { "DEBUG" }
@@ -26,21 +38,22 @@ project "PNG-Parser"
 	language "C++"
 	cppdialect "C++17"
 
-	targetdir ("bin/" .. output .. "/%{prj.name}")
-	objdir ("bin/int/" .. output .. "/%{prj.name}")
-
 	includedirs {
 		"include/",
 		"src/"
 	}
 
-	files 
-	{
-		"**.hpp",
-		"**.h",
-		"**.cpp"
+	files {
+		"include/**.hpp",
+		"include/**.h",
+		"src/**.cpp"
 	}
+	IncludeZlib()
 
 function UsePNG()
-	includedirs "PNG-Parser/include"
+	includedirs "%{wks.location}/include/"
+	links "PNG-Parser"
+	LinkZlib()
 end
+
+include "thirdparty/zlib/"
