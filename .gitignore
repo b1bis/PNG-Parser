@@ -1,6 +1,7 @@
 ### PNG-Parser ###
 
 bin/
+!script/premake5.exe
 
 ### C++ ###
 # Prerequisites
@@ -30,11 +31,6 @@ bin/
 *.la
 *.a
 *.lib
-
-# Executables
-*.exe
-*.out
-*.app
 
 ### VisualStudio ###
 ## Ignore Visual Studio temporary files, build results, and
