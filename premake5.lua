@@ -57,3 +57,4 @@ function UsePNG()
 end
 
 include "thirdparty/zlib/"
+include "example/Sandbox/"
