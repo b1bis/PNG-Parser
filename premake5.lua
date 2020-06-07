@@ -39,8 +39,7 @@ project "PNG-Parser"
 	cppdialect "C++17"
 
 	includedirs {
-		"include/",
-		"src/"
+		"include/"
 	}
 
 	files {
