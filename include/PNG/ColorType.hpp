@@ -6,7 +6,7 @@
 
 namespace PNG
 {
-	enum class ColorType : uint8_t
+	enum class ColorType : std::uint8_t
 	{
 		Indexed = EnumBit<0>(),
 		Colored = EnumBit<1>(),
@@ -24,17 +24,17 @@ namespace PNG
 		ColorTypeFlags() = default;
 
 		ColorTypeFlags(ColorType colorType) : 
-			m_flags { static_cast<uint8_t>(std::move(colorType)) } {}
+			m_flags { static_cast<std::uint8_t>(std::move(colorType)) } {}
 
-		ColorTypeFlags(uint8_t colorType) :
+		ColorTypeFlags(std::uint8_t colorType) :
 			m_flags{ std::move(colorType) } {}
 
-		void SetFlags(ColorType colorType) { m_flags = static_cast<uint8_t>(colorType); }
+		void SetFlags(ColorType colorType) { m_flags = static_cast<std::uint8_t>(colorType); }
 
 		bool TestFlags(ColorTypeFlags mask) { return static_cast<bool>(*this & mask); }
 
 		operator bool() { return m_flags; }
-		operator uint8_t() { return m_flags; }
+		operator std::uint8_t() { return m_flags; }
 
 		ColorTypeFlags operator&(ColorTypeFlags mask);
 		ColorTypeFlags operator|(ColorTypeFlags mask);
@@ -48,6 +48,6 @@ namespace PNG
 		ColorTypeFlags& operator|=(ColorTypeFlags mask);
 		ColorTypeFlags& operator^=(ColorTypeFlags mask);
 	private:
-		uint8_t m_flags;
+		std::uint8_t m_flags;
 	};
 }
