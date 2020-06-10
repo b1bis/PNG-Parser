@@ -29,6 +29,8 @@ namespace PNG
 		ColorTypeFlags(std::uint8_t colorType) :
 			m_flags{ std::move(colorType) } {}
 
+		static ColorTypeFlags Parse(std::uint8_t raw);
+
 		void SetFlags(ColorType colorType) { m_flags = static_cast<std::uint8_t>(colorType); }
 
 		bool TestFlags(ColorTypeFlags mask) { return static_cast<bool>(*this & mask); }
@@ -48,6 +50,6 @@ namespace PNG
 		ColorTypeFlags& operator|=(ColorTypeFlags mask);
 		ColorTypeFlags& operator^=(ColorTypeFlags mask);
 	private:
-		std::uint8_t m_flags;
+		std::uint8_t m_flags = 0;
 	};
 }
