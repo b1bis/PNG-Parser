@@ -35,8 +35,8 @@ namespace PNG
 
 		bool TestFlags(ColorTypeFlags mask) { return static_cast<bool>(*this & mask); }
 
-		operator bool() { return m_flags; }
-		operator std::uint8_t() { return m_flags; }
+		explicit operator bool() { return m_flags; }
+		explicit operator std::uint8_t() { return m_flags; }
 
 		ColorTypeFlags operator&(ColorTypeFlags mask);
 		ColorTypeFlags operator|(ColorTypeFlags mask);
