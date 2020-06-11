@@ -28,7 +28,8 @@ namespace PNG
 
 		std::streampos NextChunkPos() const { return m_dataEnd + static_cast<std::streampos>(4); }
 
-		static ChunkInfo Parse(std::istream& is, Endian endian = Endian::BigEndian);
+		static ChunkInfo ReadChunk(std::istream& is, Endian endian = Endian::BigEndian);
+		static ChunkInfo::Type ParseType(std::uint32_t raw);
 	private:
 		ChunkInfo(std::uint32_t lenght, Type type, std::uint32_t crt, std::streampos dataBegin) : 
 			m_lenght{ lenght }, m_type{ type }, m_crt{ crt }, m_dataBegin{ dataBegin }, 
@@ -41,6 +42,4 @@ namespace PNG
 		std::streampos m_dataBegin;
 		std::streampos m_dataEnd;
 	};
-
-	ChunkInfo::Type ParseType(std::istream& is, Endian endian = Endian::BigEndian);
 }
