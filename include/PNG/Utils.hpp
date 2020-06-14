@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <array>
 #include <vector>
+#include <zlib.h>
 
 namespace PNG
 {
@@ -21,6 +22,8 @@ namespace PNG
 	std::istream& Read(std::istream& is, std::uint16_t& i, Endian endian = Endian::BigEndian);
 	std::istream& Read(std::istream& is, std::uint32_t& i, Endian endian = Endian::BigEndian);
 	std::istream& Read(std::istream& is, std::uint64_t& i, Endian endian = Endian::BigEndian);
+
+	std::vector<std::uint8_t> Inflate(std::vector<std::uint8_t> deflatedData, size_t readBufferSize);
 
 	template<unsigned bitN> constexpr unsigned EnumBit()
 	{

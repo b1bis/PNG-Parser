@@ -103,4 +103,25 @@ namespace PNG
 		return is;
 	}
 
+	std::vector<std::uint8_t> Inflate(std::vector<std::uint8_t> deflatedData, size_t readBufferSize)
+	{
+
+		std::vector<std::uint8_t> inflated(readBufferSize);
+
+		z_stream infStream;
+		infStream.zalloc = Z_NULL;
+		infStream.zfree  = Z_NULL;
+		infStream.opaque = Z_NULL;
+		
+		infStream.avail_in = static_cast<uInt>(deflatedData.size());
+		infStream.next_in  = reinterpret_cast<Bytef*>(deflatedData.data());
+		infStream.avail_out = static_cast<uInt>(inflated.size());
+		infStream.next_out = reinterpret_cast<Bytef*>(inflated.data());
+
+		inflateInit(&infStream);
+		inflate(&infStream, Z_NO_FLUSH);
+		inflateEnd(&infStream);
+
+		return inflated;
+	}
 }
