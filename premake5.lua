@@ -15,7 +15,7 @@ workspace "PNG-Parser"
 	objdir ("bin/int/" .. output .. "/%{prj.name}")
 
 function IncludeZlib()
-	includedirs "thirdparty/zlib/"
+	includedirs "%{wks.location}/thirdparty/zlib/"
 end
 
 function LinkZlib()
@@ -50,6 +50,7 @@ project "PNG-Parser"
 	IncludeZlib()
 
 function UsePNG()
+	IncludeZlib()
 	includedirs "%{wks.location}/include/"
 	links "PNG-Parser"
 	LinkZlib()
