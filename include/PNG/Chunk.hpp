@@ -1,6 +1,7 @@
 #pragma once
 
 #include "PNG/Utils.hpp"
+#include <vector>
 
 namespace PNG
 {
@@ -27,6 +28,8 @@ namespace PNG
 		Type GetType() const { return m_type; }
 
 		std::streampos NextChunkPos() const { return m_dataEnd + static_cast<std::streampos>(4); }
+
+		std::vector<std::uint8_t> Load(std::istream&);
 
 		static ChunkInfo ReadChunk(std::istream& is, Endian endian = Endian::BigEndian);
 		static ChunkInfo::Type ParseType(std::uint32_t raw);

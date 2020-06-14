@@ -19,6 +19,20 @@ namespace PNG
 		}
 	}
 
+	std::vector<std::uint8_t> ChunkInfo::Load(std::istream& is)
+	{
+		std::vector<std::uint8_t> data;
+		is.seekg(begin());
+		while (is.tellg() != end())
+		{
+			std::uint8_t i;
+			Read(is, i);
+			data.push_back(std::move(i));
+		}
+
+		return data;
+	}
+
 	ChunkInfo ChunkInfo::ReadChunk(std::istream& is, Endian endian)
 	{
 		std::uint32_t lenght = 0, rawType = 0, crt = 0;
