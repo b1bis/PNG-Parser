@@ -11,5 +11,3 @@ namespace PNG
 		return out;
 	}
 }
-
-
