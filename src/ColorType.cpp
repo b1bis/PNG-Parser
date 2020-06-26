@@ -17,6 +17,15 @@ namespace PNG
 		return flags;
 	}
 
+	size_t ColorTypeFlags::ChannelsNumber()
+	{
+		size_t channels = 1; // At least one channel
+		if (*this & PNG::ColorType::Alphaed) channels++;
+		if (*this & PNG::ColorType::Colored) channels += 2;
+
+		return channels;
+	}
+
 	ColorTypeFlags ColorTypeFlags::operator&(ColorTypeFlags mask)
 	{
 		return m_flags & mask.m_flags;

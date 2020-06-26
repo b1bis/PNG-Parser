@@ -20,7 +20,7 @@ namespace PNG
 
 	private:
 		Header(unsigned x, unsigned y, ColorTypeFlags colorType);
-		unsigned m_x, m_y;
+		unsigned int m_x = 0, m_y = 0;
 		ColorTypeFlags m_colorType;
 	};
 }

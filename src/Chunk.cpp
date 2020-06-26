@@ -19,7 +19,7 @@ namespace PNG
 		}
 	}
 
-	std::vector<std::uint8_t> ChunkInfo::Load(std::istream& is)
+	std::vector<std::uint8_t> ChunkInfo::Load(std::istream& is) const
 	{
 		std::vector<std::uint8_t> data;
 		is.seekg(begin());

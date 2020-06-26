@@ -22,7 +22,6 @@ namespace PNG
 		Read(is, rawCompressionMethod); // There is only one compression method, so just ignore it
 
 		Read(is, rawFilteringMethod);
-		//TODO : Support filtering
 
 		Read(is, rawInterlacingMethod); // I'll not implement interlacing
 

@@ -29,4 +29,18 @@ namespace PNG
 	{
 		return (1 << bitN);
 	}
+
+	enum class FilteringType : std::uint8_t
+	{
+		None,
+		Sub,
+		Up,
+		Average,
+		Paeth
+	};
+
+	inline FilteringType ParseFilteringType(std::uint8_t rawFilteringType)
+	{
+		return static_cast<FilteringType>(rawFilteringType);
+	}
 }
