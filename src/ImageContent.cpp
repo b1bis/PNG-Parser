@@ -43,7 +43,7 @@ namespace PNG
         m_content.push_back(std::move(line));
     }
 
-    Color ImageContent::At(size_t x, size_t y)
+    Color ImageContent::At(size_t x, size_t y) const
     {
         return m_content.at(y).at(x);
     }

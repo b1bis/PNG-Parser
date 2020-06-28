@@ -38,8 +38,8 @@ namespace PNG
 			m_lenght{ lenght }, m_type{ type }, m_crt{ crt }, m_dataBegin{ dataBegin }, 
 			m_dataEnd { dataBegin + static_cast<std::streampos>(lenght) }
 			{}
-		std::uint32_t m_crt;
-		std::uint32_t m_lenght;
+		std::uint32_t m_crt = 0;
+		std::uint32_t m_lenght = 0;
 		Type m_type = Unsupported;
 
 		std::streampos m_dataBegin;

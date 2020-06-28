@@ -18,7 +18,7 @@ namespace PNG
 		ImageContent& operator=(const ImageContent&) = default;
 		ImageContent& operator=(ImageContent&&) noexcept = default;
 
-		Color At(size_t x, size_t y);
+		Color At(size_t x, size_t y) const;
 		
 		void AddScanline(const Scanline& scanline);
 	private:
