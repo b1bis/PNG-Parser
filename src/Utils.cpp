@@ -38,7 +38,7 @@ namespace PNG
 
 	std::istream& Read(std::istream& is, std::uint8_t& i)
 	{
-		is.read(reinterpret_cast<char*>(&i), 1);
+		i = is.get();
 		return is;
 	}
 
@@ -48,12 +48,12 @@ namespace PNG
 		if (endian == Endian::LittleEndian)
 		{
 			for (auto it = data.rbegin(); it != data.rend(); ++it)
-				is.read(reinterpret_cast<char*>(&(*it)), 1);
+				*it = is.get();
 		}
 		else if (endian == Endian::BigEndian)
 		{
 			for (auto it = data.begin(); it != data.end(); ++it)
-				is.read(reinterpret_cast<char*>(&(*it)), 1);
+				*it = is.get();
 		}
 
 
@@ -70,12 +70,12 @@ namespace PNG
 		if (endian == Endian::LittleEndian)
 		{
 			for (auto it = data.rbegin(); it != data.rend(); ++it)
-				is.read(reinterpret_cast<char*>(&(*it)), 1);
+				*it = is.get();
 		}
 		else if (endian == Endian::BigEndian)
 		{
 			for (auto it = data.begin(); it != data.end(); ++it)
-				is.read(reinterpret_cast<char*>(&(*it)), 1);
+				*it = is.get();
 		}
 
 		i = Read(data);
@@ -90,12 +90,12 @@ namespace PNG
 		if (endian == Endian::LittleEndian)
 		{
 			for (auto it = data.rbegin(); it != data.rend(); ++it)
-				is.read(reinterpret_cast<char*>(&(*it)), 1);
+				*it = is.get();
 		}
 		else if (endian == Endian::BigEndian)
 		{
 			for (auto it = data.begin(); it != data.end(); ++it)
-				is.read(reinterpret_cast<char*>(&(*it)), 1);
+				*it = is.get();
 		}
 
 		i = Read(data);
