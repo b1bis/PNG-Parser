@@ -58,3 +58,4 @@ end
 
 include "thirdparty/zlib/"
 include "example/Sandbox/"
+include "example/LoadImage/"
